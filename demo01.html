@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>juicer_demo</title>
+    <script type="text/javascript" src="juicer-min.js"></script>
+</head>
+<body>
+    <div id="tb"></div>
+    <script id="tpl" type="text/template">
+        <table>
+            <tr>
+                <td>姓名</td>
+                <td>年龄</td>
+                <td>得分</td>
+                <td>下标</td>
+            </tr>
+            {#遍历数组list}
+            {@each list as item,index}
+                <tr>
+                    <td>${item.name}</td>
+                    <td>${item.age}</td>
+                    <td>${item.score}</td>
+                    <td>${index}</td>
+                </tr>
+            {@/each}
+        </table>
+    </script>
+    <script>
+        var data={
+            list:[
+                {name:'zhangsan',age:18,score:99},
+                {name:'lisi',age:19,score:88},
+                {name:'xiaoming',age:20,score:100},
+                {name:'xiaohong',age:21,score:99}
+            ]
+        } 
+        var tpl=document.getElementById("tpl").innerHTML;
+        var html=juicer(tpl,data);
+        tb.innerHTML=html;
+        console.log(html);
+    </script>
+</body>
+</html>
